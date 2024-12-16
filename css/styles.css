@@ -1,3 +1,40 @@
+/* Базовые стили, использующиеся для всех устройств */
+body {
+  font-family: 'MyShrift', Caveat, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('path/to/home-slide-1-1920x800.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+  body {
+      padding-top: 50px; /* Уменьшаем отступы для мобильных устройств */
+      background-position: center; /* Центруем фон на мобильных */
+  }
+  
+  header {
+      padding: 15px; /* Сокращаем отступы в заголовке */
+      font-size: 1.2em; /* Увеличиваем размер шрифта в заголовке */
+  }
+  
+  /* Пример адаптации других элементов */
+  h1 {
+      font-size: 1.5em; /* Уменьшаем размер заголовка */
+  }
+  
+  p {
+      font-size: 0.9em; /* Уменьшаем размер текста для лучшего восприятия */
+  }
+
+  /* Ваши другие стили... */
+
+}
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +61,55 @@ header {
   z-index: 1000; /* Задает уровень наложения, чтобы он был выше остальных элементов */
 }
 
+.promo-section {
+  display: flex;
+  justify-content: space-evenly; /* Равномерное распределение карточек */
+  margin: 20px 0;
+}
+
+.promo-card {
+  position: relative;
+  margin: 50px; /* Увеличиваем отступ между карточками */
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.5s;
+  flex: 1; /* Позволяет карточкам занять всю доступную ширину */
+  max-width: 100%; /* Максимальная ширина карточек (можно настроить) */
+}
+
+.promo-card img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s; /* Плавное увеличение изображения */
+}
+
+.promo-card:hover img {
+  transform: scale(1.05); /* Увеличение при наведении */
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0; /* Прикрепляем текст к нижней части карточки */
+  left: 50%;
+  transform: translate(-50%, 0); /* Центрируем текст по горизонтали */
+  color: white; /* Белый цвет текста */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Тень для читаемости */
+  font-size: 1.2rem; /* Размер шрифта */
+  padding: 10px; /* Отступ для текста */
+  
+}
+
+.card-content h4 {
+  margin: 0; /* Убираем отступы верх и низ */
+}
+
+.card-content p {
+  margin: 5px 0 0; /* Убираем отступы, оставляя небольшой отступ сверху */
+}
+
+.promo-card:hover {
+  transform: scale(1.05); /* Увеличение карточки при наведении */
+}
 
 body {
   font-family: 'CustomFontName', Arial, sans-serif;
@@ -165,14 +251,32 @@ img {
   margin-right: 5px;
   vertical-align: middle;
 }
-.divider {
-  width: 100%; /* Ширина полосы */
-  height: 30px; /* Высота полосы */
-  background-color: #b88353; /* Цвет полосы */
-  margin: 20px auto; /* Центрирование и отступы */
-  border-radius: 5px; /* Скругление углов */
+
+
+
+.image-gallery {
+  display: flex;
+  flex-wrap: nowrap; /* Изображения не будут переноситься на новую строку */
+  width: 100%; /* Занимает всю ширину родительского элемента */
+  max-width: 100%; /* Максимальная ширина */
+  margin-top: 5vw;
+  margin-bottom: 5vw;
 }
 
+.image-item {
+  width: 25%; /* Каждое изображение занимает 25% от ширины контейнера */
+  flex-shrink: 0; /* Не сжимать изображения при уменьшении контейнера */
+}
+
+.image-item img {
+  width: 100%; /* Изображение занимает всю ширину контейнера изображения */
+  height: auto; /* Высота изображений сохраняет пропорции */
+  transition: transform 0.3s ease; /* Анимация увеличения */
+}
+
+.image-item img:hover {
+  transform: scale(1.05); /* Увеличение изображения при наведении */
+}
 
 
 
