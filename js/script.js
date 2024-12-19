@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-
-
   // Открытие модального окна при клике на карточки меню
   document.querySelectorAll('.menu-card').forEach(card => {
     card.addEventListener('click', function () {
@@ -114,5 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Ошибка:', error));
     });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const featureItems = document.querySelectorAll('.feature-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target); // Убираем наблюдение после появления
+          }
+      });
+  });
+
+  featureItems.forEach(item => {
+      observer.observe(item); // Начинаем наблюдение за каждым элементом
   });
 });
