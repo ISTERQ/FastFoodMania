@@ -1,64 +1,29 @@
-/* Базовые стили, использующиеся для всех устройств */
-body {
-  font-family: 'MyShrift', Caveat, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-image: url('path/to/home-slide-1-1920x800.jpg');
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 80px;
-}
-
-/* Мобильные стили */
-@media (max-width: 768px) {
-  body {
-      padding-top: 50px; /* Уменьшаем отступы для мобильных устройств */
-      background-position: center; /* Центруем фон на мобильных */
-  }
-  
-  header {
-      padding: 15px; /* Сокращаем отступы в заголовке */
-      font-size: 1.2em; /* Увеличиваем размер шрифта в заголовке */
-  }
-  
-  /* Пример адаптации других элементов */
-  h1 {
-      font-size: 1.5em; /* Уменьшаем размер заголовка */
-  }
-  
-  p {
-      font-size: 0.9em; /* Уменьшаем размер текста для лучшего восприятия */
-  }
-
-  /* Ваши другие стили... */
-
-}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: Caveat, sans-serif;
+  font-family: 'MyShrift', Caveat, sans-serif; /* Применяем кастомный шрифт */
   margin: 0;
-  background-color: #D5CDBF;
+  padding: 0;
+  background-image: url('img/home-slide-1-1920x800.jpg'); /* Установите новый фон */
+  background-size: cover; /* Обеспечиваем полное покрытие фоном */
+  background-position: center; /* Центруем фон */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px; /* Отступ для основного контента, чтобы видна была область заголовка */
+  padding-top: 80px; /* Отступ для основного контента */
 }
-
 header {
-  background-color: #f2ad6d; /* Цвет заголовка */
+  background-color: rgba(242, 173, 109, 0.9); /* Полупрозрачный цвет для заголовка */
   width: 100%;
   padding: 20px;
   text-align: center;
-  position: fixed; /* Закрепляет заголовок вверху страницы */
-  top: 0; /* Расположение заголовка */
-  left: 0; /* Отступ слева */
-  z-index: 1000; /* Задает уровень наложения, чтобы он был выше остальных элементов */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Уровень наложения заголовка */
 }
 
 .promo-section {
@@ -360,10 +325,6 @@ a {
   text-decoration: none; /* Убираем подчеркивание */
 }
 
-a:hover {
-  text-decoration: underline; /* Подчеркивание при наведении */
-}
-
 
 /* Стили для фона модального окна */
 .modal-overlay {
@@ -403,4 +364,51 @@ a:hover {
 }
 
 
+@media (max-width: 768px) {
+  body {
+      padding-top: 50px; /* Уменьшаем отступы для мобильных устройств */
+      background-size: cover; /* Покрытие фона на мобильных */
+  }
+}
 
+
+.features {
+  text-align: center; /* Центрируем текст */
+  margin: 40px 0; /* Отступ сверху и снизу */
+}
+
+.features-container {
+  display: flex; /* Используем Flexbox для равномерного распределения */
+  justify-content: space-around; /* Распределяем элементы равномерно по ширине */
+  flex-wrap: wrap; /* Позволяем перенос элементов на новую строку */
+}
+
+.feature-item {
+  flex: 0 1 23%; /* Задаем фиксированную ширину для каждого элемента */
+  margin: 20px; /* Отступ между элементами */
+  opacity: 0; /* Начальная непрозрачность для анимации */
+  transform: translateY(20px); /* Начальное положение для анимации */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Плавный переход */
+}
+
+.feature-item img {
+  width: 200px; /* Ширина иконки */
+  height: auto; /* Автоматическая высота пропорционально ширине */
+}
+
+.feature-item.visible {
+  opacity: 1; /* Полная непрозрачность при видимости */
+  transform: translateY(0); /* Возврат в исходное положение */
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from {
+      opacity: 0; /* Начальная непрозрачность */
+      transform: translateY(200px); /* Начальная позиция немного ниже */
+  }
+  to {
+      opacity: 1; /* Полная непрозрачность */
+      transform: translateY(0); /* Возврат в исходное положение */
+  }
+}
